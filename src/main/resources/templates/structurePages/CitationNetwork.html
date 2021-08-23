@@ -1,0 +1,251 @@
+
+<html>
+<head>
+    <title>Citation Network</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="../../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../../static/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <style type="text/css">
+
+        .top-panel {
+            border: 1px solid #eceff9;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .top-panel > .layui-card-body{
+            height: 40px;
+        }
+        .top-panel-number{
+            line-height:20px;
+            font-size: 30px;
+        }
+
+        .top-panel-tips{
+            border-left:1px solid #eceff9;
+            line-height:30px;
+            font-size: 12px
+        }
+
+
+        .oy-btn{
+            display: inline-block;
+            height: 38px;
+            line-height: 38px;
+            padding: 0 18px;
+            background-color: #17bd88;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .oy-btn-primary{
+            border: 1px solid #C9C9C9;
+            background-color: #fff;
+            color: #555;
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="../../static/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../static/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../../static/css/public.css" media="all">
+
+</head>
+
+<body>
+
+
+<div class="layuimini-main">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12 layui-col-md4 ">
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">Choose a timeslice</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+
+                        <div class="layui-col-xs7 layui-col-md7">
+                            <div class="layui-input-inline" id="from">
+                                <select name="modules" lay-verify="required" lay-search="" id="demo1">
+                                    <option value="">From</option>
+                                </select>
+                            </div>
+
+                            <div class="layui-input-inline" id="to">
+                                <select name="modules" lay-verify="required" lay-search="" id="demo2">
+                                    <option value="">To</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs5 layui-col-md5 top-panel-tips">
+                            <div class="layui-btn-container">
+                                <button class="layui-btn layui-btn-primary layui-btn-radius" id="button">Build Network</button>
+                                </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md4 ">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">Number Of Vertices</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <div class="layui-col-xs12 layui-col-md12 top-panel-number center " id="nCount">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md4 ">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">Number of Edges</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <div class="layui-col-xs12 layui-col-md12 top-panel-number" id="eCount">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="layui-row layui-col-space15">
+     <div class="layui-col-xs15 layui-col-md12">
+         <div id="mynetwork" style="background-color:#ffffff;min-height:900px;padding: 10px"></div>
+     </div>
+        </div>
+</div>>
+
+<script type="text/javascript">
+
+                layui.use(['form', 'upload', 'dropdown','layer'],function(){
+            var form = layui.form;
+            var $ = layui.jquery;
+            $.ajax({
+                url: "/getYear",
+                dataType: 'json',
+                type: 'get',
+                success: function (data) {
+                    console.log(data);//下面会提到这个data是什么值
+                    //使用循环遍历，给下拉列表赋值
+                    $.each(data.years, function (index, value) {
+                        // console.log(value);
+                        $('#demo1').append(new Option(value));
+                        $('#demo2').append(new Option(value))// 下拉菜单里添加元素
+                    });
+                    layui.form.render("select");//重新渲染 固定写法
+                }
+            });
+
+
+        });
+            var $ = layui.jquery;
+$(document).on('click',"#button",function(){
+
+console.log("yes");
+
+
+    var $ = layui.jquery;
+    var f=$("#demo1").val();
+    var t=$("#demo2").val();
+    console.log(f);
+    console.log(t);
+
+     $.ajax({
+                        url:"/yearsCitation",
+                        data:{from:f,to:t},
+                        method:'post',
+                        success:function () {
+                        console.log("yes");}
+            });
+
+
+
+
+       var nodesData = [];
+       var edgesData= [];
+
+
+
+        $.ajax({
+        type:"post",
+        url:"/citationSta",
+        data:{},
+        dataType:"json",
+        async:true,
+        success: function(result){
+        nodesData=result.nodes;
+        edgesData=result.edges;
+
+
+               $("#nCount").html(result.NodesCount);
+               $("#eCount").html(result.EdgesCount);
+
+
+
+        console.log(nodesData);
+
+
+    // 创建节点数据数组
+    var nodes = new vis.DataSet(nodesData);
+
+    // 创建边数据数组
+    var edges = new vis.DataSet(edgesData);
+
+    // 获取容器
+    var container = document.getElementById('mynetwork');
+
+    // 将数据赋值给vis 数据格式化器
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {};
+
+    // 初始化关系图
+    var network = new vis.Network(container, data, options);
+
+     network.on("click", function (params) {
+   if (params.nodes.length === 1) {
+     var node = nodes.get(params.nodes[0]);
+     if(node.url != null) {
+       window.open(node.url, '_blank');
+     }
+    }
+ });
+ }
+        });
+
+ });
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

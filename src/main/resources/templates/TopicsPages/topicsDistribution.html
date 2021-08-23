@@ -1,0 +1,532 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="../../static/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../static/css/layuimini.css?v=2.0.4.2" media="all">
+    <link rel="stylesheet" href="../../static/css/themes/default.css" media="all">
+    <link rel="stylesheet" href="../../static/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../../static/css/public.css" media="all">
+    <style>
+        .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
+        .icon {margin-right:10px;color:#1aa094;}
+        .icon-cray {color:#ffb800!important;}
+        .icon-blue {color:#1e9fff!important;}
+        .icon-tip {color:#ff5722!important;}
+        .layuimini-qiuck-module {text-align:center;margin-top: 10px}
+        .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
+        .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
+        .welcome-module {width:100%;height:210px;}
+        .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+        .panel-body {padding:10px}
+        .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
+        .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;margin-top: .3em;}
+        .layui-red {color:red}
+        .main_btn > p {height:40px;}
+        .layui-bg-number {background-color:#F8F8F8;}
+        .layuimini-notice:hover {background:#f6f6f6;}
+        .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+        .layuimini-notice-title,.layuimini-notice-label {
+            padding-right: 70px !important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;}
+        .layuimini-notice-title {line-height:28px;font-size:14px;}
+        .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
+    </style>
+</head>
+<script type="text/html" id="currentTableBar">
+    <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">Details</a>
+</script>
+
+
+<body>
+
+
+<div class="layuimini-main">
+    <div class="layui-row">
+        <div class="layui-col-md9">
+            <div class="layui-col-md12">
+                <div class="layui-card" style="background-color:#ffffff;height:50px;padding: 20px ;overflow:scroll">
+                    <div id="choosetopic" style="display:inline" >
+
+                        <form class="layui-form" action="" lay-filter="example" style="display:inline">
+                            <div class="layui-form-item">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="0" title="Topic 0">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="1" title="Topic 1">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="2" title="Topic 2">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="3" title="Topic 3">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="4" title="Topic 4">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="5" title="Topic 5">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="6" title="Topic 6">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="7" title="Topic 7">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="8" title="Topic 8">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="9" title="Topic 9">
+
+
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="10" title="Topic 10">
+
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="11" title="Topic 11">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="12" title="Topic 12">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="13" title="Topic 13">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="14" title="Topic 14">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="15" title="Topic 15">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="16" title="Topic 16">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="17" title="Topic 17">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="18" title="Topic 18">
+                                <input type="checkbox" name="remember"  lay-skin="primary" value="19" title="Topic 19">
+
+
+
+
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="buttonEvo">ok</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-col-md12">
+                <div class="layui-card" style="background-color:#ffffff;height:500px;padding: 10px;overflow:scroll">
+                    <div class="layui-card-header"><i class="fa fa-fire icon"></i>Evolution</div>
+                    <div id="evolution" style="min-height:300px;padding: 10px;"></div>
+                </div>
+            </div>
+    <div class="layui-col-md12">
+
+            <div class="layui-card" style="background-color:#ffffff;height:300px;padding: 10px;overflow:scroll">
+                <div class="layui-card-header"><i class="fa fa-bullhorn icon icon"></i>Papers containing selected topic</div>
+                <div class="layui-card-body layui-text" >
+
+                    <table class="layui-table" lay-even="" lay-skin="row" id="table" lay-filter="demo1"></table>
+
+                </div>
+                </div>
+        </div>
+
+        </div>
+        <div class="layui-col-md3" >
+
+            <div class="layui-card" style="background-color:#ffffff;max-height:915px;padding: 10px;overflow:scroll">
+
+                <div class="layui-card-header"><i class="layui-icon">&#xe642;</i> Change timeslices</div>
+
+
+                <div class="layui-card-body layui-text layadmin-text">
+                    <select name="modules" lay-verify="required" lay-search="" id="demo1" style="display:inline">
+                        <option value="">Select a year</option>
+                    </select>
+
+                        <div class="layui-btn-container" style="display:inline">
+                            <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="button">ok</button>
+                        </div>
+
+
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                <div style="display:inline" id="t1"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b1">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t2"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b2">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t3"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b3">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t4"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b4">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t5"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b5">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t6"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b6">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t7"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b7">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t8"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b8">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t9"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b9">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t10"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b10">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t11"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b11">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t12"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b12">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t13"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b13">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t14"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b14">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t15"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b15">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t16"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b16">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t17"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b17">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t18"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b18">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t19"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b19">check</button>
+                    </div>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+
+                    <div style="display:inline" id="t20"></div>
+                    <div class="layui-btn-container" style="display:inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" id="b20">check</button>
+                    </div>
+                </div>
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+</div>
+
+
+
+<script src="../../static/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="../../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../static/lib/jq-module/jquery.particleground.min.js" charset="utf-8"></script>
+<script src="../../static/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+layui.use(['form', 'upload', 'dropdown','layer','echarts'],function(){
+            var form = layui.form,
+            echarts=layui.echarts,
+            layer = layui.layer;
+
+            var $ = layui.jquery;
+            $.ajax({
+                url: "/getYear",
+                dataType: 'json',
+                type: 'get',
+                success: function (data) {
+                    console.log(data);//下面会提到这个data是什么值
+                    //使用循环遍历，给下拉列表赋值
+                    $.each(data.years, function (index, value) {
+                        // console.log(value);
+                        $('#demo1').append(new Option(value));
+                    });
+                    layui.form.render("select");//重新渲染 固定写法
+                }
+            });
+
+var $ = layui.jquery;
+$(document).on('click',"#button",function(){
+    var $ = layui.jquery;
+    var y=$("#demo1").val();
+    console.log(y);
+
+
+         $.ajax({
+                        url:"/yearsTopic",
+                        data:{year:y},
+                        method:'post',
+                        success:function () {
+                        console.log("yes");}
+            });
+
+
+ $.ajax({
+        type:"post",
+        url:"/topics",
+        data:{},
+        dataType:"json",
+        async:true,
+        success: function(result){
+        $("#t1").html(result.t1);
+        $("#t2").html(result.t2);
+        $("#t3").html(result.t3);
+        $("#t4").html(result.t4);
+        $("#t5").html(result.t5);
+        $("#t6").html(result.t6);
+        $("#t7").html(result.t7);
+        $("#t8").html(result.t8);
+        $("#t9").html(result.t9);
+        $("#t10").html(result.t10);
+        $("#t11").html(result.t11);
+        $("#t12").html(result.t12);
+        $("#t13").html(result.t13);
+        $("#t14").html(result.t14);
+        $("#t15").html(result.t15);
+        $("#t16").html(result.t16);
+        $("#t17").html(result.t17);
+        $("#t18").html(result.t18);
+        $("#t19").html(result.t19);
+        $("#t20").html(result.t20);
+
+
+        }
+        });
+        });//第一个button结束
+
+var buttons=['#b1','#b2','#b3','#b4','#b5','#b6','#b7','#b8','#b9','#b10','#b11','#b12','#b13','#b14','#b15','#b16','#b17','#b18','#b19','#b20']
+var $ = layui.jquery;
+for(var i = 0, len = buttons.length; i < len; i++){
+
+
+(function(i){
+$(document).on('click',buttons[i],function(){
+    var $ = layui.jquery;
+    var table = layui.table;
+    table.render({
+    elem: '#table'//表格id
+    ,url: 'getPapersContain?id='+i //数据接口
+    ,cellMinWidth: 80
+    // ,pages: Math.ceil(data.length/nums)
+    ,cols: [
+        [ //表头
+      {field: 'title', title: 'Title',sort:false}
+      ,{field: 'Probability', title: 'Prob', sort: true}
+      ,{title: 'Show', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+    ]
+    ]
+    ,page: true//启用分页
+    ,limit: 20//限制每一页的行数
+    ,limits: [5,10,15]//表示每一页可显示的行数
+  });
+
+  console.log(i);
+
+    table.on('tool(demo1)', function(obj){
+var data = obj.data;
+var id=data.Paper_ID;
+window.open('/paperT?id='+id);
+
+  });
+
+
+        });
+        })(i)
+        }//生成表格的button结束
+
+
+
+//复选框
+$(document).on('click','#buttonEvo',function(){
+
+    var id = document.getElementsByName('remember');
+    var value = new Array();
+    for(var i = 0; i < id.length; i++){
+     if(id[i].checked)
+     value.push(id[i].value);
+
+     }
+
+
+     var ids=value.toString();
+     console.log(ids);
+
+     //渲染变化图
+     var datas=new Array();
+     var years=[];
+     var test=[1,2,3];
+    var echart1 = echarts.init(document.getElementById('evolution'), 'walden');
+
+     $.ajax({
+        type:"post",
+        url:"/evolution?ids="+ids,
+        data:{},
+        dataType:"json",
+        async:true,
+        success: function(result){
+        for(var i = 0, len = value.length; i < len; i++){
+        datas.push(result[value[i]+'th']);
+        console.log(result[value[i]+'th']);
+        years=result.years;
+        }
+        console.log(datas);
+        console.log(value);
+
+
+
+
+        var series=[];
+        var legend=[];
+	   for(var i = 0;i<value.length;i++){
+	       legend.push('Topic'+(value[i]));
+	       series.push({
+	           name: 'Topic'+(value[i]),
+	           type: 'line',
+	           areaStyle: {},
+	           smooth: true,
+	           data:datas[i]
+	       });
+	 }
+
+	    console.log(legend);
+        console.log(series);
+
+
+
+            var option= {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: legend
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: years,
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: series
+        };
+
+
+
+        echart1.setOption(option);
+
+        window.onresize = function () {
+            echart1.resize();
+            }
+
+
+
+
+console.log("ok");
+
+        }//success function结束
+
+        });//ajax结束
+
+
+
+
+
+
+
+});//复选框button结束
+
+
+
+        //从这里不要动
+        });
+
+
+
+
+
+</script>
+</body>
+</html>

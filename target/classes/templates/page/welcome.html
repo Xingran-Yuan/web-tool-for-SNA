@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>welcome</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../static/css/public.css" media="all">
+    <style>
+        .site-demo-button{margin: 10px 0 10px 0}
+    </style>
+</head>
+<body>
+
+
+<div class="layui-inline" style="width: 235px;">
+    <input name="" placeholder="在输入框提供一些常用的选项" class="layui-input" id="demo2">
+</div>
+
+<script src="../../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script>
+layui.use(['dropdown', 'util', 'layer', 'table'], function(){
+  var dropdown = layui.dropdown
+  ,util = layui.util
+  ,layer = layui.layer
+  ,table = layui.table
+  ,$ = layui.jquery;
+
+
+
+  //初演示 - 绑定输入框
+  dropdown.render({
+    elem: '#demo2'
+    ,data: [{
+      title: 'menu item 1'
+      ,id: 101
+    },{
+      title: 'menu item 2'
+      ,id: 102
+    },{
+      title: 'menu item 3'
+      ,id: 103
+    },{
+      title: 'menu item 4'
+      ,id: 104
+    },{
+      title: 'menu item 5'
+      ,id: 105
+    },{
+      title: 'menu item 6'
+      ,id: 106
+    }]
+    ,click: function(obj){
+      this.elem.val(obj.title);
+    }
+    ,style: 'width: 235px;'
+  });
+
+  //初演示 - 绑定文字
+  dropdown.render({
+    elem: '#demo3'
+    ,data: [{
+      title: 'menu item 1'
+      ,id: 100
+    },{
+      title: 'menu item 2'
+      ,id: 101
+      ,child: [{  //横向子菜单
+        title: 'menu item 2-1'
+        ,id: 1011
+      },{
+        title: 'menu item 2-2'
+        ,id: 1012
+      }]
+    },{
+      title: 'menu item 3'
+      ,id: 102
+    },{
+      type: '-' //分割线
+    },{
+      title: 'menu group'
+      ,id: 103
+      ,type: 'group' //纵向菜单组
+      ,child: [{
+        title: 'menu item 4-1'
+        ,id: 1031
+      },{
+        title: 'menu item 4-2'
+        ,id: 1032
+      }]
+    },{
+      type: '-' //分割线
+    },{
+      title: 'menu item 5'
+      ,id: 104
+    },{
+      title: 'menu item 5'
+      ,id: 104
+    }]
+    ,click: function(obj){
+      this.elem.val(obj.title);
+    }
+  });
+
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页三</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../static/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../../static/css/public.css" media="all">
+    <style>
+        .top-panel {
+            border: 1px solid #eceff9;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .top-panel > .layui-card-body{
+            height: 60px;
+        }
+        .top-panel-number{
+            line-height:60px;
+            font-size: 30px;
+            border-right:1px solid #eceff9;
+        }
+        .top-panel-tips{
+            line-height:30px;
+            font-size: 12px
+        }
+
+        #mynetwork {
+            width: 900px;
+            height: 900px;
+            border: 1px solid lightgray;
+        }
+        #loadingBar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 902px;
+            height: 902px;
+            background-color: rgba(255, 255, 255, 0.8);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            opacity: 1;
+        }
+        #wrapper {
+            position: relative;
+            width: 900px;
+            height: 900px;
+        }
+
+        #text {
+            position: absolute;
+            top: 8px;
+            left: 530px;
+            width: 30px;
+            height: 50px;
+            margin: auto auto auto auto;
+            font-size: 22px;
+            color: #000000;
+        }
+
+        div.outerBorder {
+            position: relative;
+            top: 400px;
+            width: 600px;
+            height: 44px;
+            margin: auto auto auto auto;
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            background: rgb(255,255,255); /* Old browsers */
+            background: -moz-linear-gradient(
+                    top,
+                    rgba(252, 252, 252, 1) 0%,
+                    rgba(237, 237, 237, 1) 100%
+            ); /* FF3.6+ */
+            background: -webkit-gradient(
+                    linear,
+                    left top,
+                    left bottom,
+                    color-stop(0%, rgba(252, 252, 252, 1)),
+                    color-stop(100%, rgba(237, 237, 237, 1))
+            ); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(
+                    top,
+                    rgba(252, 252, 252, 1) 0%,
+                    rgba(237, 237, 237, 1) 100%
+            ); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(
+                    top,
+                    rgba(252, 252, 252, 1) 0%,
+                    rgba(237, 237, 237, 1) 100%
+            ); /* Opera 11.10+ */
+            background: -ms-linear-gradient(
+                    top,
+                    rgba(252, 252, 252, 1) 0%,
+                    rgba(237, 237, 237, 1) 100%
+            ); /* IE10+ */
+            background: linear-gradient(
+                    to bottom,
+                    rgba(252, 252, 252, 1) 0%,
+                    rgba(237, 237, 237, 1) 100%
+            ); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+            border-radius: 72px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #border {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 500px;
+            height: 23px;
+            margin: auto auto auto auto;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        #bar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 20px;
+            height: 20px;
+            margin: auto auto auto auto;
+            border-radius: 11px;
+            border: 2px solid rgba(30, 30, 30, 0.05);
+            background: rgb(255 218 185); /* Old browsers */
+            box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+<!--<div class="layuimini-container">-->
+<div class="layuimini-main">
+
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12 layui-col-md3">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">要展示的指标名称</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <div class="layui-col-xs9 layui-col-md9 top-panel-number">
+                            9,054,056
+                        </div>
+                        <div class="layui-col-xs3 layui-col-md3 top-panel-tips">
+                            比昨天 <a style="color: #1aa094">▲0.12</a><br>
+                            比七日 <a style="color: #bd3004">▼0.06</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md3">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">要展示的指标名称</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <div class="layui-col-xs9 layui-col-md9 top-panel-number">
+                            9,054,056
+                        </div>
+                        <div class="layui-col-xs3 layui-col-md3 top-panel-tips">
+                            比昨天 <a style="color: #1aa094">▲0.12</a><br>
+                            比七日 <a style="color: #bd3004">▼0.06</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md3">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">要展示的指标名称</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <div class="layui-col-xs9 layui-col-md9 top-panel-number">
+                            9,054,056
+                        </div>
+                        <div class="layui-col-xs3 layui-col-md3 top-panel-tips">
+                            比昨天 <a style="color: #1aa094">▲0.12</a><br>
+                            比七日 <a style="color: #bd3004">▼0.06</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md3">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">要展示的指标名称</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <div class="layui-col-xs9 layui-col-md9 top-panel-number">
+                            9,054,056
+                        </div>
+                        <div class="layui-col-xs3 layui-col-md3 top-panel-tips">
+                            比昨天 <a style="color: #1aa094">▲0.12</a><br>
+                            比七日 <a style="color: #bd3004">▼0.06</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12 layui-col-md9">
+            <div id="wrapper">
+                <div id="mynetwork"></div>
+                <div id="loadingBar">
+                    <div class="outerBorder">
+                        <div id="text">0%</div>
+                        <div id="border">
+                            <div id="bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-md3">
+            <div id="echarts-pies" style="background-color:#ffffff;min-height:400px;padding: 10px"></div>
+        </div>
+    </div>
+
+
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12 layui-col-md6">
+            <div id="echarts-dataset" style="background-color:#ffffff;min-height:300px;padding: 10px"></div>
+        </div>
+        <div class="layui-col-xs12 layui-col-md6">
+            <div id="echarts-map" style="background-color:#ffffff;min-height:300px;padding: 10px"></div>
+        </div>
+    </div>
+
+
+</div>
+<!--</div>-->
+<script src="../../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../static/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script>
+    layui.use(['layer', 'echarts'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            echarts = layui.echarts;
+
+
+
+       var nodesData = [];
+       var edgesData= [];
+
+
+        $.ajax({
+        type:"post",
+        url:"/CoAuthorshipSta",
+        data:{},
+        dataType:"json",
+        async:true,
+        success: function(result){
+        nodesData=result.nodes;
+        edgesData=result.edges;
+
+        console.log(nodesData);
+
+
+    // 创建节点数据数组
+    var nodes = new vis.DataSet(nodesData);
+
+    // 创建边数据数组
+    var edges = new vis.DataSet(edgesData);
+
+    // 获取容器
+    var container = document.getElementById('mynetwork');
+
+    // 将数据赋值给vis 数据格式化器
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {};
+
+    // 初始化关系图
+    var network = new vis.Network(container, data, options);
+
+        network.on("stabilizationProgress", function (params) {
+          var maxWidth = 496;
+          var minWidth = 20;
+          var widthFactor = params.iterations / params.total;
+          var width = Math.max(minWidth, maxWidth * widthFactor);
+
+          document.getElementById("bar").style.width = width + "px";
+          document.getElementById("text").innerText =
+            Math.round(widthFactor * 100) + "%";
+        });
+        network.once("stabilizationIterationsDone", function () {
+          document.getElementById("text").innerText = "100%";
+          document.getElementById("bar").style.width = "496px";
+          document.getElementById("loadingBar").style.opacity = 0;
+          // really clean the dom element
+          setTimeout(function () {
+            document.getElementById("loadingBar").style.display = "none";
+          }, 500);
+        });
+
+
+
+
+        }
+        });
+
+    });
+</script>
+</body>
+</html>

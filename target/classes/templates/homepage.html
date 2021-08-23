@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Homepage</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../static/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../static/css/public.css" media="all">
+    <style>
+        .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
+        .icon {margin-right:10px;color:#1aa094;}
+        .icon-cray {color:#ffb800!important;}
+        .icon-blue {color:#1e9fff!important;}
+        .icon-tip {color:#ff5722!important;}
+        .layuimini-qiuck-module {text-align:center;margin-top: 10px}
+        .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
+        .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
+        .welcome-module {width:100%;height:210px;}
+        .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+        .panel-body {padding:10px}
+        .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
+        .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;margin-top: .3em;}
+        .layui-red {color:red}
+        .main_btn > p {height:40px;}
+        .layui-bg-number {background-color:#F8F8F8;}
+        .layuimini-notice:hover {background:#f6f6f6;}
+        .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+        .layuimini-notice-title,.layuimini-notice-label {
+            padding-right: 70px !important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;}
+        .layuimini-notice-title {line-height:28px;font-size:14px;}
+        .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
+    </style>
+</head>
+<body>
+<script type="text/html" id="currentTableBar">
+    <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">Details</a>
+</script>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>Data Set</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-blue">until 2019</span>
+                                                        <h5>Papers</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" th:text="${papersCount}"> </h1>
+                                                        <small>Sum</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-cyan">until 2019</span>
+                                                        <h5>English Papers</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" th:text="${englishPapers}"> </h1>
+                                                        <small>Sum</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-orange">Until 2019</span>
+                                                        <h5>Authors</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" th:text="${authorsCount}"> </h1>
+                                                        <small>Sum</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-green">Until 2019</span>
+                                                        <h5>Citation</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" th:text="${citationCount}"> </h1>
+                                                        <small>Sum</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>Shortcuts</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10 layuimini-qiuck">
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="citation" data-title="Citation Network" data-icon="fa fa-window-maximize">
+                                                <i class="fa fa-window-maximize"></i>
+                                                <cite>Citation Network</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="coAuthorShip" data-title="Co-authorship Network" data-icon="fa fa-gears">
+                                                <i class="fa fa-gears"></i>
+                                                <cite>Co-authorship Network</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="citationA" data-title="Params Citation" data-icon="fa fa-file-text">
+                                                <i class="fa fa-file-text"></i>
+                                                <cite>Params Citation</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="coAuthorA" data-title="Params Coauthor" data-icon="fa fa-dot-circle-o">
+                                                <i class="fa fa-dot-circle-o"></i>
+                                                <cite>Params Coauthor</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="Topic" data-title="Topics" data-icon="fa fa-calendar">
+                                                <i class="fa fa-calendar"></i>
+                                                <cite>Topics </cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="Compare/citationNet" data-title="Citation network" data-icon="fa fa-hourglass-end">
+                                                <i class="fa fa-hourglass-end"></i>
+                                                <cite>Comparison</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="Compare/coAuthorNet" data-title="Co-authorship network" data-icon="fa fa-snowflake-o">
+                                                <i class="fa fa-snowflake-o"></i>
+                                                <cite>Comparison</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="Compare/citationParams" data-title="Comparison of citation network" data-icon="fa fa-search">
+                                                <i class="fa fa-search"></i>
+                                                <cite>Comparison</cite>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>Statistics</div>
+                            <div class="layui-card-body">
+                                <div id="echarts-others" style="width: 100%;min-height:250px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>Statistics</div>
+                            <div class="layui-card-body">
+                                <div id="echarts-citation" style="width: 100%;min-height:250px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-fire icon"></i>Organization Profile</div>
+                    <div class="layui-card-body layui-text">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="100">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>University</td>
+                                <td th:text="${uni}">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Department</td>
+                                <td th:text="${dep}"></td>
+                            </tr>
+                            <tr>
+                                <td>Link</td>
+                                <td>
+                                    <a th:href="${url}" target="_blank">check</a><br>
+
+                                </td>
+                            </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>Table1 Papers</div>
+                    <div class="layui-card-body layui-text">
+
+                        <table class="layui-table" lay-even="" lay-skin="row" id="demo" lay-filter="demo1"></table>
+
+                    </div>
+                </div>
+
+
+
+
+        </div>
+    </div>
+        <div class="layui-row layui-col-space15">
+
+                <div class="layui-col-md8">
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon fa-line-chart icon"></i>Table2 Authorship pattern</div>
+                    <div id="1-1" style="background-color:#ffffff;min-height:400px;padding: 10px">
+                        <table class="layui-table" lay-even="false" lay-skin="nob" id="authors"></table>
+                    </div>
+
+                    </div>
+                    </div>
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon fa-line-chart icon"></i>Ranking of papers</div>
+                    <div id="2-2" style="background-color:#ffffff;min-height:400px;padding: 10px">
+                        <div id="echarts3" style="width: 100%;min-height:250px"></div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="layui-row layui-col-space15">
+
+            <div class="layui-col-md8">
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon fa-line-chart icon"></i>Table3 Authors Productivity</div>
+                    <table class="layui-table" lay-even="false" lay-skin="nob" id="authors2"></table>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon fa-line-chart icon"></i>Ranking of authors</div>
+                    <div id="1-2" style="background-color:#ffffff;min-height:400px;padding: 10px">
+                        <div id="echarts4" style="width: 100%;min-height:250px"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+</div>
+<script src="../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../static/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['layer', 'miniTab','echarts'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            miniTab = layui.miniTab,
+            echarts = layui.echarts;
+
+        miniTab.listen();
+
+        /**
+         * 论文表格
+         **/
+  var table = layui.table;
+
+  //第一个实例
+  table.render({
+    elem: '#demo'//表格id
+    ,url: '/getAllPapers' //数据接口
+    ,cellMinWidth: 80
+    // ,pages: Math.ceil(data.length/nums)
+    ,cols: [
+        [ //表头
+      {field: 'title', title: 'Title',sort: true}
+      ,{field: 'year', title: 'Year', sort: true}
+      ,{field: 'citation', title: 'Citation', sort: true}
+      ,{title: 'Show', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+    ]
+    ]
+    ,page: true//启用分页
+    ,limit: 15//限制每一页的行数
+    ,limits: [5,10,15]//表示每一页可显示的行数
+  });
+
+  table.on('tool(demo1)', function(obj){
+var data = obj.data;
+var id=data.id;
+window.open('paperT?id='+id);
+
+  });
+
+
+
+
+
+        /**
+         * 表格2
+         **/
+  var table1 = layui.table;
+
+  //第一个实例
+  table1.render({
+    elem: '#authors'//表格id
+    ,url: 'coAuthorData' //数据接口
+    ,cellMinWidth: 80
+     ,skin: 'nob'
+  ,even: false //开启隔行背景
+  ,size: 'sm'
+    // ,pages: Math.ceil(data.length/nums)
+    ,cols: [
+        [ //表头
+        {field: 'author',title: 'Authors',sort: false}
+      ,{field: '1', title: '1960-1970', sort: true}
+      ,{field: '2', title: '1970-1980', sort: true}
+      ,{field: '3', title: '1980-1990', sort: true}
+      ,{field: '4', title: '1990-2000', sort: true}
+      ,{field: '5', title: '2000-2005', sort: true}
+      ,{field: '6', title: '2005-2010', sort: true}
+      ,{field: '7', title: '2010-2013', sort: true}
+      ,{field: '8', title: '2013-2016', sort: true}
+      ,{field: '9', title: '2016-2019', sort: true}
+    ]
+    ]
+  });
+
+
+          /**
+         * 表格3
+         **/
+  var table2 = layui.table;
+
+  //第一个实例
+  table2.render({
+    elem: '#authors2'//表格id
+    ,url: 'authorProductivity' //数据接口
+    ,cellMinWidth: 80
+     ,skin: 'nob'
+  ,even: false //开启隔行背景
+  ,size: 'sm'
+    // ,pages: Math.ceil(data.length/nums)
+    ,cols: [
+        [ //表头
+        {field: 'Articles',title: 'Articles',sort: true}
+      ,{field: '1', title: '1960-1970', sort: true}
+      ,{field: '2', title: '1970-1980', sort: true}
+      ,{field: '3', title: '1980-1990', sort: true}
+      ,{field: '4', title: '1990-2000', sort: true}
+      ,{field: '5', title: '2000-2005', sort: true}
+      ,{field: '6', title: '2005-2010', sort: true}
+      ,{field: '7', title: '2010-2013', sort: true}
+      ,{field: '8', title: '2013-2016', sort: true}
+      ,{field: '9', title: '2016-2019', sort: true}
+    ]
+    ]
+         ,page: true//启用分页
+    ,limit: 10//限制每一页的行数
+    ,limits: [5,10,15]//表示每一页可显示的行数
+  });
+
+
+
+
+
+
+
+        /**
+         * 报表功能1
+         */
+
+         var echartsOthers = echarts.init(document.getElementById('echarts-others'), 'walden');
+         var echartsCitation = echarts.init(document.getElementById('echarts-citation'), 'walden');
+
+
+          var xName = [];
+          var papers = [];
+          var englishPapers = [];
+          var authors = [];
+          var citations = [];
+
+        $.ajax({
+        type:"post",
+        url:"/statistics",
+        data:{},
+        dataType:"json",
+        async:true,
+        success: function(result){
+        xName=result.years;
+        papers=result.papers;
+        englishPapers=result.englishPapers;
+        authors=result.authors;
+        citations=result.citations;
+
+
+
+
+
+
+            var optionRecords = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['papers','English papers','authors']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['1960-1970','1970-1980','1980-1990','1990-2000','2000-2005','2005-2010','2010-2013','2013-2016','2016-2020']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'papers',
+                    type:'line',
+                    data:papers
+                },
+                {
+                    name:'English papers',
+                    type:'line',
+                    data: englishPapers
+                },
+                {
+                    name:'authors',
+                    type:'line',
+                    data:authors
+                }
+            ]
+        };
+
+
+            var optionRecords1 = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['citation']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['1960-1970','1970-1980','1980-1990','1990-2000','2000-2005','2005-2010','2010-2013','2013-2016','2016-2019']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'citation',
+                    type:'line',
+                    data:citations
+                }
+            ]
+        };
+
+
+        echartsOthers.setOption(optionRecords);
+        echartsCitation.setOption(optionRecords1);
+
+
+
+        }
+        });
+
+
+
+        /**
+         * 报表功能1
+         */
+
+         var echarts3 = echarts.init(document.getElementById('echarts3'), 'walden');
+         var echarts4 = echarts.init(document.getElementById('echarts4'), 'walden');
+
+
+          var paperName = [];
+          var citation = [];
+          var authorName = [];
+          var nums = [];
+
+        $.ajax({
+        type:"post",
+        url:"/top10papers",
+        data:{},
+        dataType:"json",
+        async:true,
+        success: function(result){
+        paperName=result.name;
+        citation=result.citation;
+
+            var option3= {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['citation']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: false
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            yAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: paperName
+            },
+            xAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'citation',
+                    type:'bar',
+                    data:citation,
+                    color:'#32CD32'
+                }
+            ]
+        };
+
+        console.log(citation);
+
+        echarts3.setOption(option3);
+
+       window.onresize = function () {
+            echarts3.resize();
+        }
+
+        }
+        });
+
+
+                $.ajax({
+        type:"post",
+        url:"/top10authors",
+        data:{},
+        dataType:"json",
+        async:true,
+        success: function(result){
+        authorName=result.name;
+        nums=result.nums;
+
+            var option4= {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['articles']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: false
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: authorName
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'articles',
+                    type:'bar',
+                    data:nums
+                }
+            ]
+        };
+
+        echarts4.setOption(option4);
+
+       window.onresize = function () {
+            echarts4.resize();
+        }
+
+        }
+        });
+
+});
+
+</script>
+</body>
+</html>

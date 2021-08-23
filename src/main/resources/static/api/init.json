@@ -1,0 +1,123 @@
+{
+  "homeInfo": {
+    "title": "Homapage",
+    "href": "homepage"
+  },
+  "logoInfo": {
+    "title": "Organizational Analysis",
+    "image": "images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "Structural Analysis",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+
+        {
+          "title": "Profile",
+          "href": "homepage",
+          "icon": "fa fa-home",
+          "target": "_self"
+        },
+        {
+          "title": "Citation Analysis",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "Citation Network Visualization",
+              "href": "citation",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "Development Pattern",
+              "href": "citationA",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+
+        {
+          "title": "Co-Authorship Network",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "Co-authorship Network Visualization",
+              "href": "coAuthorShip",
+              "icon": "fa fa-list-alt",
+              "target": "_self"
+            },
+            {
+              "title": "Development Pattern",
+              "href": "coAuthorA",
+              "icon": "fa fa-navicon",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Content Analysis",
+      "icon": "fa fa-lemon-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "Topics Analysis",
+          "href": "Topic",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "Comparison",
+      "icon": "fa fa-slideshare",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "Comparison Of Development Patterns ",
+          "href": "",
+          "icon": "fa fa-meetup",
+          "target": "",
+          "child": [
+            {
+              "title": "Citation Network",
+              "href": "Compare/citationParams",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "Co-authorship Network",
+              "href": "Compare/coauthorshipParams",
+              "icon": "fa fa-superpowers",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Citation Analysis",
+          "href": "Compare/citationNet",
+          "icon": "fa fa-superpowers",
+          "target": "_self"
+        },
+        {
+          "title": "Authorship Analysis",
+          "href": "Compare/coAuthorNet",
+          "icon": "fa fa-superpowers",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.rwth.analysisweb.AnalysisTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.01 s <<< FAILURE! - in com.rwth.analysisweb.AnalysisTests
+test  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.rwth.analysisweb.AnalysisTests.test(AnalysisTests.java:34)
+
